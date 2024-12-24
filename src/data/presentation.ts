@@ -12,24 +12,28 @@ type Presentation = {
 };
 
 const presentation: Presentation = {
-  mail: "maxencewolff.pro@gmail.com",
-  title: "Hi, I’m Maxence 👋",
+  mail: "alisinai850@gmail.com",
+  title: "Hi, I’m Ali Sinai 👋",
   // profile: "/profile.webp",
   description:
-    "Bonjour, i'm a *french frontend developer* with over *3 years* of web experience. I am currently working with *NextJS and Typescript*. Outside of work I complete my pokemon card collection and learning TypeScript.",
+    "Hello, my friend 👋 I am a Backend developer with over a year of experience of web development. My primary focus has been .Net core and have toched Angular a little bit :) I love rock music🤘 and watching tv shows is my guilty pleaasure. On my way to learn Node.Js to become an allmighty full-stack developer.",
   socials: [
     {
-      label: "X",
-      link: "https://twitter.com/itsstormzz_",
+      label: "../../public/github.png",
+      link: "https://github.com/Ali-Sinai",
     },
     {
-      label: "Bento",
-      link: "https://bento.me/m-wolff",
+      label: "../../public/linkedin.png",
+      link: "https://linkedin.com/in/ali-sinai-pour",
     },
     {
-      label: "Github",
-      link: "https://github.com/MaeWolff",
+      label: "../../public/telegram.png",
+      link: "https://t.me/Sina_the_s",
     },
+    {
+      label: "../../public/mobile.png",
+      link: "tel:+989104204630"
+    }
   ],
 };
 
