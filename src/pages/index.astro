@@ -1,5 +1,4 @@
 ---
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets"
 
 import Layout from "@/layouts/Layout.astro";
@@ -12,9 +11,10 @@ import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 import presentation from "@/data/presentation";
 import projects from "@/data/projects";
 
-const posts = (await getCollection("posts")).sort(function (first, second) {
-  return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-});
+export const res = await fetch("https://localhost:7243/v2/blog");
+export const data = await res.json();
+console.log(data);
+
 ---
 
 <Layout>
@@ -53,19 +53,18 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
         <h3 class="text-lg text-neutral-100">Latest posts</h3>
         <Link href="/posts" label="See all posts" isUnderline target="_self" />
       </header>
-      {posts.length === 0 && <p>Soon, stay connected 👀...</p>}
+      {data.length === 0 && <p>Soon, stay connected 👀...</p>}
 
       <section class="flex flex-col gap-4 md:flex-row md:flex-wrap">
         {
-          posts.length !== 0 &&
-            posts
+          data.length !== 0 &&
+          data
               .slice(0, 2)
-              .map((post) => (
+              .map((post: any) => (
                 <PostCard
-                  publishedAt={post.data.publishedAt}
-                  title={post.data.title}
-                  description={post.data.description}
-                  slug={post.slug}
+                  id={post.id}
+                  publishedAt={post.dateCreated}
+                  title={post.title}
                 />
               ))
         }
