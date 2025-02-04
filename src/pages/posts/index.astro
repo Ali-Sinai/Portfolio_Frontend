@@ -1,11 +1,6 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
-import formatDate from "@/utils/formatDate";
-
-const posts = (await getCollection("posts")).sort(function (first, second) {
-  return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-});
+import {data} from "../index.astro"
 ---
 
 <Layout title="Template - All Posts">
@@ -14,16 +9,16 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
 
     <article class="flex flex-col gap-4">
       {
-        posts.map((post) => (
+        data.map((post: any) => (
           <a
             class="group flex flex-col gap-2 border-t border-neutral-700 py-4 transition-all hover:text-neutral-100"
-            href={`/posts/${post.slug}`}
+            href={`/posts/${post.id}`}
           >
             <div class="flex w-full items-center justify-between">
-              <h2 class="text-lg">{post.data.title}</h2>
+              <h2 class="text-lg">{post.title}</h2>
 
               <div class="flex flex-row items-center gap-4">
-                <p>{formatDate(post.data.publishedAt)}</p>
+                <p>{new Date(post.dateCreated).toLocaleDateString('en-us')}</p>
                 <svg
                   width="18"
                   height="18"
@@ -46,7 +41,7 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
                 </svg>
               </div>
             </div>
-            <p>{post.data.description}</p>
+            {/* <p>{post.data.description}</p> */}
           </a>
         ))
       }
