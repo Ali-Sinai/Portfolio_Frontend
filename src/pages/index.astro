@@ -1,4 +1,5 @@
 ---
+import type { GetStaticPaths } from "astro";
 import { Image } from "astro:assets"
 
 import Layout from "@/layouts/Layout.astro";
@@ -12,7 +13,7 @@ import presentation from "@/data/presentation";
 import projects from "@/data/projects";
 
 export const res = await fetch("https://localhost:7243/v2/blog");
-export const data = await res.json();
+export const data:any[] = await res.json();
 console.log(data);
 
 ---
@@ -63,8 +64,9 @@ console.log(data);
               .map((post: any) => (
                 <PostCard
                   id={post.id}
-                  publishedAt={post.dateCreated}
+                  dateCreated={post.dateCreated}
                   title={post.title}
+                  content={post.content}
                 />
               ))
         }

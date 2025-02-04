@@ -1,0 +1,28 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { data } from "../index.astro";
+
+export const getStaticPaths = () => {
+  var x: any = [];
+  data.map((post: any) => {
+    x.push({ params: { id: post.id } });
+  });
+  return x;
+};
+
+const { id } = Astro.params;
+const post = data.find((x) => x.id == id);
+
+---
+
+<Layout title={post.Title}>
+  <main class="post mx-auto flex w-full max-w-prose flex-col gap-4">
+    <header role="presentation">
+      <h1>
+        {post.title} -{" "}
+        {new Date(post.dateCreated).toLocaleDateString("en-us")}
+      </h1>
+      <p class="italic">{post.content}</p>
+    </header>
+  </main>
+</Layout>
