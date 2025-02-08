@@ -1,17 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { data } from "../index.astro";
+import { PostData } from "../index.astro";
 
 export const getStaticPaths = () => {
   var x: any = [];
-  data.map((post: any) => {
+  PostData.map((post: any) => {
     x.push({ params: { id: post.id } });
   });
   return x;
 };
 
 const { id } = Astro.params;
-const post = data.find((x) => x.id == id);
+const post = PostData.find((x) => x.id == id);
 
 ---
 

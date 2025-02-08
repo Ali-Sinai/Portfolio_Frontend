@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import {data} from "../index.astro"
+import {PostData} from "../index.astro"
 ---
 
 <Layout title="Template - All Posts">
@@ -9,7 +9,7 @@ import {data} from "../index.astro"
 
     <article class="flex flex-col gap-4">
       {
-        data.map((post: any) => (
+        PostData.map((post: any) => (
           <a
             class="group flex flex-col gap-2 border-t border-neutral-700 py-4 transition-all hover:text-neutral-100"
             href={`/posts/${post.id}`}
