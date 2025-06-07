@@ -12,7 +12,7 @@ import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 import presentation from "@/data/presentation";
 import projects from "@/data/projects";
 
-export const Posts = await fetch("https://esvvdxmcsumeydtucvuq.supabase.co/v2/blog");
+export const Posts = await fetch("https://localhost:7243/v2/blog");
 export const PostData:any[] = await Posts.json();
 console.log(PostData);
 
